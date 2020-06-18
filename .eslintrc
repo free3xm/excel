@@ -11,8 +11,24 @@
     "rules": {
         "linebreak-style": 0,
         "comma-dangle": [
-            2,
-            "always"
+            "error",
+            {
+                "imports": "never",
+                "objects": "always",
+                "arrays": "only-multiline",
+                "functions": "only-multiline",
+                "exports": "never"
+            }
+        ],
+        "no-unused-vars": "off",
+        "class-methods-use-this": "off",
+        "operator-linebreak": "off",
+        "no-param-reassign": "off",
+        "no-plusplus": [
+            "error",
+            {
+                "allowForLoopAfterthoughts": true
+            }
         ]
     }
 }

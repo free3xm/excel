@@ -1,5 +1,5 @@
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin, } = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
@@ -7,7 +7,7 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
 
-const filename = ext => (isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`);
+const filename = (ext) => (isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`);
 
 const jsLoaders = () => {
   const loaders = ['babel-loader'];
