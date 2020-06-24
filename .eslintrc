@@ -14,16 +14,19 @@
             "error",
             {
                 "imports": "never",
-                "objects": "always",
+                "objects": "only-multiline",
                 "arrays": "only-multiline",
                 "functions": "only-multiline",
                 "exports": "never"
             }
         ],
+        "func-names": "off",
+        "object-curly-newline": "off",
         "no-unused-vars": "off",
         "class-methods-use-this": "off",
         "operator-linebreak": "off",
         "no-param-reassign": "off",
+        "no-use-before-define": "off",
         "no-plusplus": [
             "error",
             {

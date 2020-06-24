@@ -3,18 +3,36 @@ const CODES = {
   Z: 90,
 };
 
-function createCell(text = '') {
-  return `<div class="cell" contenteditable>${text}</div>`;
+function createCell(row) {
+  return function (text = '', col) {
+    return `<div class="cell"
+              contenteditable 
+              data-col="${col}" 
+              data-type="cell"
+              data-id="${row}:${col}">
+              ${text}
+            </div>`;
+  };
 }
 
-function createCol(element) {
-  return `<div class="column">${element}</div>`;
+function createCol(element, index) {
+  return `
+    <div class="column" data-type="resizable" data-col="${index}">
+      ${element}
+      <div class="col-resize" data-resize="column"></div>
+    </div>`;
 }
 
 function createRow(content, rowIndex = '') {
+  const resize = rowIndex
+    ? '<div class="row-resize" data-resize="row"></div>'
+    : '';
   return `
-    <div class="row">
-      <div class="row-info">${rowIndex}</div>
+    <div class="row" data-type="resizable">
+      <div class="row-info">
+        ${rowIndex}
+        ${resize}
+      </div>
       <div class="row-data">${content}</div>
     </div>`;
 }
@@ -29,13 +47,13 @@ export function createTeable(rowsCount = 15) {
 
   const cols = new Array(colsCount)
     .fill('')
-    .map((el, index) => createCol(toChar(CODES.A + index)))
+    .map((el, index) => createCol(toChar(CODES.A + index), index))
     .join('');
   rows.push(createRow(cols));
 
-  for (let i = 0; i < rowsCount; i++) {
-    const cells = new Array(colsCount).fill(createCell()).join('');
-    rows.push(createRow(cells, i + 1));
+  for (let row = 0; row < rowsCount; row++) {
+    const cells = new Array(colsCount).fill('').map(createCell(row)).join('');
+    rows.push(createRow(cells, row + 1));
   }
 
   return rows.join('');
