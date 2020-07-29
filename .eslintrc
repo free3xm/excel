@@ -3,7 +3,8 @@
     "env": {
         "es6": true,
         "browser": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
     "extends": [
         "airbnb-base/legacy"
@@ -27,6 +28,8 @@
         "operator-linebreak": "off",
         "no-param-reassign": "off",
         "no-use-before-define": "off",
+        "no-eval": "off",
+        "max-classes-per-file": "off",
         "no-plusplus": [
             "error",
             {
